@@ -1,2 +1,0 @@
-# Parvi
-Flock intelligence simulator
