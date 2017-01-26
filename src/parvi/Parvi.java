@@ -15,7 +15,7 @@ public class Parvi extends JPanel implements Runnable{
     private static Flock flock;
     public static void main(String[] args){
         
-        JPanel p = new Parvi();
+        Parvi p = new Parvi();
         p.setPreferredSize(new Dimension(800, 600));
         
         JFrame f = new JFrame("They fly (soon)!");
@@ -30,30 +30,30 @@ public class Parvi extends JPanel implements Runnable{
             (int)(screen.getHeight() / 2 - f.getHeight() / 2), f.getWidth(), f.getHeight());
         f.setVisible(true);
         
-        f.setVisible(true);
-        
         flock = new Flock(20);
+        
+        new Thread(p).start();
+        
     }
     
     @Override
     public void run(){
-        double lastTime = getTime();
+        long lastTime = System.nanoTime();
         while(true){
             
-            double newTime = getTime();
-            flock.runStep(newTime - lastTime);
+            long newTime = System.nanoTime();
+            
+            flock.runStep((double)(newTime - lastTime) / 1e9);
+            
             lastTime = newTime;
             try{
-                Thread.sleep(10);
+                Thread.sleep(20);
             }catch(InterruptedException e){
                 e.printStackTrace(System.err);
             }
         }
     }
     
-    private double getTime(){
-        return (double)System.nanoTime() / 1e9;
-    }
     
     @Override
     public void paint(Graphics g2){
@@ -64,6 +64,13 @@ public class Parvi extends JPanel implements Runnable{
         
         flock.draw(g);
         
+        
+        try{
+            Thread.sleep(20);
+        }catch(InterruptedException e){
+            e.printStackTrace(System.err);
+        }
+        repaint();
     }
     
     

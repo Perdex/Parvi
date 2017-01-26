@@ -13,12 +13,13 @@ public class Flock {
         
         int spread = 600;
         for(int i = 0; i < n; i++){
-            birds.add(new Bird(Math.random() * spread, Math.random() * spread, 0, 0, Math.random() * 6));
+            birds.add(new Bird(Math.random() * spread, Math.random() * spread, 100 * Math.random(), Math.random() * 6));
         }
     }
     
     public void runStep(double dt){
-        
+        for(Bird b: birds)
+            b.move(dt);
     }
     
     public void draw(Graphics2D g){
