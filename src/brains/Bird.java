@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 
 public class Bird {
 
-    private static final double size = 20;
+    private static final double size = 10;
     double x, y, vx, vy, dir;//dir as radians CCW from (1, 0)
     
     public Bird(double x, double y, double vx, double vy, double dir){

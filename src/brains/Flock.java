@@ -11,14 +11,19 @@ public class Flock {
     
     public Flock(int n){
         
-        int spread = 500;
+        int spread = 600;
         for(int i = 0; i < n; i++){
             birds.add(new Bird(Math.random() * spread, Math.random() * spread, 0, 0, Math.random() * 6));
         }
+    }
+    
+    public void runStep(double dt){
+        
     }
     
     public void draw(Graphics2D g){
         for(Bird b: birds)
             b.draw(g);
     }
+    
 }
