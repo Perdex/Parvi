@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Flock {
 
+    //Onko fiksumpi vetää vaan matriisiin eikä olioihin tiedot, olis helpompi käsitellä matemaattisesti
+    //Rinnakkaisuutta ei oikeen kuitenkaan saada et se ei varsinaisesti nopeuta prosessointia
     ArrayList<Bird> birds = new ArrayList<>();
     
     public Flock(int n){
